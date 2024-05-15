@@ -19,11 +19,7 @@
 #include "storage/chunk_helper.h"
 #include "storage/del_vector.h"
 #include "storage/lake/lake_local_persistent_index.h"
-<<<<<<< HEAD
-=======
-#include "storage/lake/lake_persistent_index.h"
 #include "storage/lake/lake_primary_key_compaction_conflict_resolver.h"
->>>>>>> 24e236e73b ([Feature] Faster PK table compaction transaction publish strategy (Part-1 cloud native) (#43934))
 #include "storage/lake/local_pk_index_manager.h"
 #include "storage/lake/location_provider.h"
 #include "storage/lake/meta_file.h"
@@ -860,16 +856,11 @@ void UpdateManager::preload_update_state(const TxnLog& txnlog, Tablet* tablet) {
     TEST_SYNC_POINT("UpdateManager::preload_update_state:return");
 }
 
-<<<<<<< HEAD
 void UpdateManager::preload_compaction_state(const TxnLog& txnlog, Tablet* tablet, const TabletSchema& tablet_schema) {
-=======
-void UpdateManager::preload_compaction_state(const TxnLog& txnlog, const Tablet& tablet,
-                                             const TabletSchemaCSPtr& tablet_schema) {
     // no need to preload if using light compaction publish
     if (StorageEngine::instance()->enable_light_pk_compaction_publish()) {
         return;
     }
->>>>>>> 24e236e73b ([Feature] Faster PK table compaction transaction publish strategy (Part-1 cloud native) (#43934))
     // no need to preload if output rowset is empty.
     const int segments_size = txnlog.op_compaction().output_rowset().segments_size();
     if (segments_size <= 0) return;

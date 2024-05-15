@@ -30,13 +30,7 @@ namespace starrocks::lake {
 
 class HorizontalPkTabletWriter : public HorizontalGeneralTabletWriter {
 public:
-<<<<<<< HEAD
-    explicit HorizontalPkTabletWriter(Tablet tablet, std::shared_ptr<const TabletSchema> schema, int64_t txn_id);
-=======
-    explicit HorizontalPkTabletWriter(TabletManager* tablet_mgr, int64_t tablet_id,
-                                      std::shared_ptr<const TabletSchema> schema, int64_t txn_id,
-                                      ThreadPool* flush_pool, bool is_compaction);
->>>>>>> 24e236e73b ([Feature] Faster PK table compaction transaction publish strategy (Part-1 cloud native) (#43934))
+    explicit HorizontalPkTabletWriter(Tablet tablet, std::shared_ptr<const TabletSchema> schema, int64_t txn_id, bool is_compaction);
 
     ~HorizontalPkTabletWriter() override;
 
@@ -64,14 +58,8 @@ private:
 
 class VerticalPkTabletWriter : public VerticalGeneralTabletWriter {
 public:
-<<<<<<< HEAD
     explicit VerticalPkTabletWriter(Tablet tablet, std::shared_ptr<const TabletSchema> schema, int64_t txn_id,
-                                    uint32_t max_rows_per_segment);
-=======
-    explicit VerticalPkTabletWriter(TabletManager* tablet_mgr, int64_t tablet_id,
-                                    std::shared_ptr<const TabletSchema> schema, int64_t txn_id,
-                                    uint32_t max_rows_per_segment, ThreadPool* flush_pool, bool is_compaction);
->>>>>>> 24e236e73b ([Feature] Faster PK table compaction transaction publish strategy (Part-1 cloud native) (#43934))
+                                    uint32_t max_rows_per_segment, bool is_compaction);
 
     ~VerticalPkTabletWriter() override;
 

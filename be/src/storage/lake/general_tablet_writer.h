@@ -116,13 +116,8 @@ public:
 
     RowsetTxnMetaPB* rowset_txn_meta() override { return nullptr; }
 
-<<<<<<< HEAD
 private:
     StatusOr<std::unique_ptr<SegmentWriter>> create_segment_writer(const std::vector<uint32_t>& column_indexes,
-=======
-protected:
-    StatusOr<std::shared_ptr<SegmentWriter>> create_segment_writer(const std::vector<uint32_t>& column_indexes,
->>>>>>> 24e236e73b ([Feature] Faster PK table compaction transaction publish strategy (Part-1 cloud native) (#43934))
                                                                    bool is_key);
 
     Status flush_columns(std::unique_ptr<SegmentWriter>* segment_writer);
